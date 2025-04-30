@@ -1,5 +1,6 @@
+import { logger } from "@datr.tech/leith-common-logger";
 import { apis } from '@app-mamv/core/config';
 
 for (const api of apis) {
-  console.log({ api });
+  logger.info({ api });
 }

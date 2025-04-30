@@ -31,6 +31,7 @@
     "changelog:commit": "git commit -m 'ci: update changelog' --no-verify",
     "clean": "npx rimraf ./coverage/* ./dist/*",
     "commit-msg": "commitlint --edit",
+    "dev": "npx tsx ./src/index.ts",
     "format:config": "npx prettier --write './*.{cjs,js,json,mjs,ts}'",
     "format:src": "npx prettier --write './src/**/*.{json,ts}'",
     "format": "npm-run-all format:config format:src",

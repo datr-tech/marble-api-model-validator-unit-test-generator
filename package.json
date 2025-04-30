@@ -43,6 +43,7 @@
     "prepare": "husky",
     "prepush": "npm run lint",
     "spell": "npx cspell .",
+    "start": "node ./dist/index.js",
     "test:it": "npx jest -c ./jest.config.integration.json ./test/integration",
     "test:unit": "npx jest -c ./jest.config.unit.json ./test/unit --coverage",
     "test": "npm run test:unit"

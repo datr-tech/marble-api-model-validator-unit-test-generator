@@ -10,6 +10,12 @@ jest.mock('@datr.tech/leith-common-services', () => ({
 import { {{ modelValidatorName }} } from "{{ appRef }}/api/modelValidators/foreign";
 import { Types } from 'mongoose';
 
+/**
+ * {{ modelValidatorName }}.negative
+ *
+ * A positive test for {{ modelValidatorName }} where {{ serviceMockName }}.{{ serviceMethodName }}
+ * (from '@datr.tech/leith-common-services') is mocked above, using {{ serviceName }}{{ serviceMethodNameUcFirst }}Mock.
+ */
 describe( "{{ modelValidatorName }}", () => {
 	describe("negative", () => {
 		test("should throw the expected error when the underlying {{ serviceName }} (mocked) returns false", async () => {

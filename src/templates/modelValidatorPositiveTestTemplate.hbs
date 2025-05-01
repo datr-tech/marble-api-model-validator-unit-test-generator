@@ -1,0 +1,36 @@
+const {{ serviceName }}{{ serviceMethodNameUcFirst }}Mock = jest.fn().mockReturnValue(true);
+
+jest.mock('@datr.tech/leith-common-services', () => ({
+  __esModule: true,
+  {{ serviceMockName }}: {
+		{{ serviceMethodName }}: {{ serviceName }}{{ serviceMethodNameUcFirst }}Mock
+  }
+}));
+
+import { {{ modelValidatorName }} } from "{{ appRef }}/api/modelValidators/foreign";
+import { Types } from 'mongoose';
+
+describe( "{{ modelValidatorName }}", () => {
+	describe("positive", () => {
+		test("should not throw an error when the underlying {{ serviceName }} (mocked) returns true", async () => {
+			/*
+       * Arrange
+       */
+      const idMock = new Types.ObjectId();
+      const docMock = { {{ idFieldNames.modelValidator }}: idMock };
+      const nextMock = jest.fn();
+
+      /*
+       * Act
+       */
+			await {{ modelValidatorName }}(docMock, nextMock);
+
+			/*
+       * Assert
+       */
+		  expect( {{ serviceName }}{{ serviceMethodNameUcFirst }}Mock ).toHaveBeenCalledTimes(1);
+      expect( {{ serviceName }}{{ serviceMethodNameUcFirst }}Mock ).toHaveBeenCalledWith(expect.objectContaining({ {{ idFieldNames.service }}: idMock }));
+			expect(nextMock).toHaveBeenCalledTimes(1);
+		});
+	});
+}); 
